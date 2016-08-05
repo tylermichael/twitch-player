@@ -1,0 +1,166 @@
+{
+  "streams": [
+    {
+      "_id": 22573674304,
+      "game": "Hearthstone: Heroes of Warcraft",
+      "viewers": 6568,
+      "created_at": "2016-07-30T03:01:16Z",
+      "video_height": 1080,
+      "average_fps": 50,
+      "delay": 0,
+      "is_playlist": false,
+      "_links": {
+        "self": "https://api.twitch.tv/kraken/streams/nl_kripp"
+      },
+      "preview": {
+        "small": "https://static-cdn.jtvnw.net/previews-ttv/live_user_nl_kripp-80x45.jpg",
+        "medium": "https://static-cdn.jtvnw.net/previews-ttv/live_user_nl_kripp-320x180.jpg",
+        "large": "https://static-cdn.jtvnw.net/previews-ttv/live_user_nl_kripp-640x360.jpg",
+        "template": "https://static-cdn.jtvnw.net/previews-ttv/live_user_nl_kripp-{width}x{height}.jpg"
+      },
+      "channel": {
+        "mature": false,
+        "status": "TSM Kripp ARENA & Ranked Later! G2A Giveaway = https://gleam.io/mVYgb/kripparrian-july-giveaway (✿☯‿☯✿)(✿☯‿☯✿)",
+        "broadcaster_language": "en",
+        "display_name": "nl_Kripp",
+        "game": "Hearthstone: Heroes of Warcraft",
+        "language": "en",
+        "_id": 29795919,
+        "name": "nl_kripp",
+        "created_at": "2012-04-15T02:25:31Z",
+        "updated_at": "2016-07-30T03:03:32Z",
+        "delay": null,
+        "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/nl_kripp-profile_image-294722d79072f28f-300x300.png",
+        "banner": null,
+        "video_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/nl_kripp-channel_offline_image-b4f28953b2190755-1920x1080.png",
+        "background": null,
+        "profile_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/nl_kripp-profile_banner-2781fb5fc1393c89-480.png",
+        "profile_banner_background_color": null,
+        "partner": true,
+        "url": "https://www.twitch.tv/nl_kripp",
+        "views": 141331598,
+        "followers": 842569,
+        "_links": {
+          "self": "http://api.twitch.tv/kraken/channels/nl_kripp",
+          "follows": "http://api.twitch.tv/kraken/channels/nl_kripp/follows",
+          "commercial": "http://api.twitch.tv/kraken/channels/nl_kripp/commercial",
+          "stream_key": "http://api.twitch.tv/kraken/channels/nl_kripp/stream_key",
+          "chat": "http://api.twitch.tv/kraken/chat/nl_kripp",
+          "features": "http://api.twitch.tv/kraken/channels/nl_kripp/features",
+          "subscriptions": "http://api.twitch.tv/kraken/channels/nl_kripp/subscriptions",
+          "editors": "http://api.twitch.tv/kraken/channels/nl_kripp/editors",
+          "teams": "http://api.twitch.tv/kraken/channels/nl_kripp/teams",
+          "videos": "http://api.twitch.tv/kraken/channels/nl_kripp/videos"
+        }
+      }
+    },
+    {
+      "_id": 22571561776,
+      "game": "Dead by Daylight",
+      "viewers": 5118,
+      "created_at": "2016-07-30T00:04:30Z",
+      "video_height": 720,
+      "average_fps": 60.2857142857,
+      "delay": 0,
+      "is_playlist": false,
+      "_links": {
+        "self": "https://api.twitch.tv/kraken/streams/joshog"
+      },
+      "preview": {
+        "small": "https://static-cdn.jtvnw.net/previews-ttv/live_user_joshog-80x45.jpg",
+        "medium": "https://static-cdn.jtvnw.net/previews-ttv/live_user_joshog-320x180.jpg",
+        "large": "https://static-cdn.jtvnw.net/previews-ttv/live_user_joshog-640x360.jpg",
+        "template": "https://static-cdn.jtvnw.net/previews-ttv/live_user_joshog-{width}x{height}.jpg"
+      },
+      "channel": {
+        "mature": true,
+        "status": "NEW VIDEO: https://www.youtube.com/watch?v=y_xa8DOYzqQ",
+        "broadcaster_language": "en",
+        "display_name": "JoshOG",
+        "game": "Dead by Daylight",
+        "language": "en",
+        "_id": 54706574,
+        "name": "joshog",
+        "created_at": "2014-01-10T00:12:58Z",
+        "updated_at": "2016-07-30T03:03:14Z",
+        "delay": null,
+        "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/joshog-profile_image-6d908181c1ab37b9-300x300.png",
+        "banner": null,
+        "video_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/joshog-channel_offline_image-fef3618d63c59193-1920x1080.png",
+        "background": null,
+        "profile_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/joshog-profile_banner-da9171fef63a208c-480.png",
+        "profile_banner_background_color": "#080308",
+        "partner": true,
+        "url": "https://www.twitch.tv/joshog",
+        "views": 26439115,
+        "followers": 1086631,
+        "_links": {
+          "self": "http://api.twitch.tv/kraken/channels/joshog",
+          "follows": "http://api.twitch.tv/kraken/channels/joshog/follows",
+          "commercial": "http://api.twitch.tv/kraken/channels/joshog/commercial",
+          "stream_key": "http://api.twitch.tv/kraken/channels/joshog/stream_key",
+          "chat": "http://api.twitch.tv/kraken/chat/joshog",
+          "features": "http://api.twitch.tv/kraken/channels/joshog/features",
+          "subscriptions": "http://api.twitch.tv/kraken/channels/joshog/subscriptions",
+          "editors": "http://api.twitch.tv/kraken/channels/joshog/editors",
+          "teams": "http://api.twitch.tv/kraken/channels/joshog/teams",
+          "videos": "http://api.twitch.tv/kraken/channels/joshog/videos"
+        }
+      }
+    },
+    {
+      "_id": 22573374016,
+      "game": "League of Legends",
+      "viewers": 3228,
+      "created_at": "2016-07-30T02:34:42Z",
+      "video_height": 1080,
+      "average_fps": 60,
+      "delay": 0,
+      "is_playlist": false,
+      "_links": {
+        "self": "https://api.twitch.tv/kraken/streams/wingsofdeath"
+      },
+      "preview": {
+        "small": "https://static-cdn.jtvnw.net/previews-ttv/live_user_wingsofdeath-80x45.jpg",
+        "medium": "https://static-cdn.jtvnw.net/previews-ttv/live_user_wingsofdeath-320x180.jpg",
+        "large": "https://static-cdn.jtvnw.net/previews-ttv/live_user_wingsofdeath-640x360.jpg",
+        "template": "https://static-cdn.jtvnw.net/previews-ttv/live_user_wingsofdeath-{width}x{height}.jpg"
+      },
+      "channel": {
+        "mature": false,
+        "status": "Educational stream in 2016 LUL",
+        "broadcaster_language": "en",
+        "display_name": "Wingsofdeath",
+        "game": "League of Legends",
+        "language": "en",
+        "_id": 30171560,
+        "name": "wingsofdeath",
+        "created_at": "2012-04-30T06:48:32Z",
+        "updated_at": "2016-07-30T03:03:19Z",
+        "delay": null,
+        "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/wingsofdeath-profile_image-4e3d5c1051d7561a-300x300.jpeg",
+        "banner": null,
+        "video_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/wingsofdeath-channel_offline_image-7a8ee8e4f1b2e2bc-1920x1080.png",
+        "background": null,
+        "profile_banner": null,
+        "profile_banner_background_color": null,
+        "partner": true,
+        "url": "https://www.twitch.tv/wingsofdeath",
+        "views": 85580119,
+        "followers": 418925,
+        "_links": {
+          "self": "http://api.twitch.tv/kraken/channels/wingsofdeath",
+          "follows": "http://api.twitch.tv/kraken/channels/wingsofdeath/follows",
+          "commercial": "http://api.twitch.tv/kraken/channels/wingsofdeath/commercial",
+          "stream_key": "http://api.twitch.tv/kraken/channels/wingsofdeath/stream_key",
+          "chat": "http://api.twitch.tv/kraken/chat/wingsofdeath",
+          "features": "http://api.twitch.tv/kraken/channels/wingsofdeath/features",
+          "subscriptions": "http://api.twitch.tv/kraken/channels/wingsofdeath/subscriptions",
+          "editors": "http://api.twitch.tv/kraken/channels/wingsofdeath/editors",
+          "teams": "http://api.twitch.tv/kraken/channels/wingsofdeath/teams",
+          "videos": "http://api.twitch.tv/kraken/channels/wingsofdeath/videos"
+        }
+      }
+    }
+  ]
+}
