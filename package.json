@@ -25,6 +25,7 @@
     "eslint": "3.1.1",
     "eslint-config-google": "^0.6.0",
     "eslint-loader": "1.4.1",
+    "eslint-plugin-flowtype": "^2.19.0",
     "eslint-plugin-import": "^1.10.3",
     "eslint-plugin-react": "5.2.2",
     "extract-text-webpack-plugin": "1.0.1",
@@ -51,6 +52,7 @@
     "react-addons-perf": "^15.3.0",
     "react-dom": "^15.2.1",
     "tcomb": "^3.2.8",
+    "twitch-api-promise": "^1.0.11",
     "twitch-sdk": "^0.3.1"
   },
   "scripts": {
