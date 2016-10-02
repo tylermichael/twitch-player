@@ -3,22 +3,21 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import classnames from 'classnames';
+import TwitchAPI from 'twitch-api-promise';
 
 import SideBarDirectory from '../SideBarDirectory';
 
 import StreamStore from '../../stores/StreamStore';
-import APIService from '../../services/APIService';
+// import APIService from '../../services/APIService';
 import AuthStore from '../../stores/AuthStore';
 import UIStore from '../../stores/UIStore';
 
 import './App.css';
 
-APIService.AuthStore = AuthStore;
-AuthStore.APIService = APIService;
+TwitchAPI.init({ client_id: "hqzlo6eefvxru8861y7hsk6dpgniy8m" });
+AuthStore.authenticated = TwitchAPI.session != undefined;
 
-APIService.init();
-
-let _StreamStore = new StreamStore(APIService, AuthStore, UIStore);
+let _StreamStore = new StreamStore(UIStore);
 
 @observer
 class App extends Component {
@@ -39,9 +38,10 @@ class App extends Component {
   }
 
   onTwitchConnectClick() {
-    Twitch.login({
-      scope: ['user_read', 'channel_read']
-    });
+    TwitchAPI.login()
+    .then(status => {
+      AuthStore.authenticated = status.authenticated;
+    })
   }
 
   bindAndToggleValue(prop: string) {
