@@ -36,6 +36,7 @@
     "node-sass": "^3.8.0",
     "opn": "4.0.2",
     "postcss-loader": "0.9.1",
+    "react-hot-loader": "^3.0.0-beta.5",
     "rimraf": "2.5.3",
     "sass-loader": "^4.0.0",
     "style-loader": "0.13.1",

@@ -1,18 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+
 import App from './containers/App';
 import './assets/index.scss';
 
-// import Perf from 'react-addons-perf';
-// Perf.start();
-
+const rootEl = document.getElementById('root');
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+  <AppContainer>
+    <App />
+  </AppContainer>,
+  rootEl
 );
 
-// Perf.stop();
-// let measurements = Perf.getLastMeasurements();
-// Perf.printInclusive(measurements);
-// Perf.printExclusive(measurements);
-// Perf.printWasted(measurements);
+if (module.hot) {
+  module.hot.accept('./containers/App', () => {
+    const NextApp = require('./containers/App').default;
+    ReactDOM.render(
+      <AppContainer>
+         <NextApp />
+      </AppContainer>,
+      rootEl
+    );
+  });
+}

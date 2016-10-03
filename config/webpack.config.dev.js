@@ -23,8 +23,9 @@ var buildPath = path.join(__dirname, isInNodeModules ? '../../..' : '..', 'build
 module.exports = {
   devtool: 'eval',
   entry: [
+    require.resolve('react-hot-loader/patch'),
     require.resolve('webpack-dev-server/client') + '?http://0.0.0.0:3000',
-    require.resolve('webpack/hot/dev-server'),
+    require.resolve('webpack/hot/only-dev-server'),
     path.join(srcPath, 'index')
   ],
   output: {
