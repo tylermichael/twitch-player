@@ -12,6 +12,7 @@ module.exports = {
     'babel-plugin-transform-flow-strip-types',
     'babel-plugin-syntax-trailing-function-commas',
     'babel-plugin-transform-class-properties',
-    'babel-plugin-transform-object-rest-spread'
+    'babel-plugin-transform-object-rest-spread',
+    'react-hot-loader/babel'
   ].map(require.resolve)
 };
