@@ -16,8 +16,10 @@ class StreamStore {
 	constructor(UIStore: Object) {
 		// this.followed = default_streams.streams.map((stream: Object): Stream => new Stream(stream));
 		this.UIStore = UIStore;
-		this.getFollowed();
-		this.getGames();
+		if(TwitchAPI.authenticated) {
+			this.getFollowed();
+			this.getGames();
+		}
     this.UIStore.isDoneLoading = true;
 	}
 
