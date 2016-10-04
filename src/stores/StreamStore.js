@@ -36,6 +36,13 @@ class StreamStore {
 			this.games = result.data.top;
 		})
 	}
+
+	getTopStreams(offset: Number = 0, replace: Boolean = false) {
+		TwitchAPI.getTopStreams()
+		.then(result => {
+			this.games = result.data.top;
+		})
+	}
 }
 
 export default StreamStore;
