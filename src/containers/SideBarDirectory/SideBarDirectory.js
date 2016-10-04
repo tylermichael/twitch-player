@@ -17,8 +17,9 @@ class SideBarDirectory extends Component {
   }
 
   handleRefreshClick() {
-    this.props.StreamStore.getFollowed(0, true);
-    this.props.StreamStore.getGames(0, true);
+    this.props.StreamStore.getFollowed();
+    this.props.StreamStore.getGames();
+    this.props.StreamStore.getTopStreams();
   }
 
   handleCategoryClick(category: string) {
@@ -37,6 +38,9 @@ class SideBarDirectory extends Component {
     );
     let games = StreamStore.games.map((game: Object, index: Number): any =>
       <ListItem key={index} handleListItemClick={this.handleListItemClick.bind(null, game.game.name)} type="game" game={game} />
+    );
+    let topStreams = StreamStore.topStreams.map((stream: Object, index: Number): any =>
+      <ListItem key={index} handleListItemClick={this.handleListItemClick.bind(null, stream.channel.name)} type="stream" stream={stream} />
     );
 
     let categories = ['followed', 'games', 'top'];
@@ -79,7 +83,9 @@ class SideBarDirectory extends Component {
       <TabBody selected={UIStore.view === 'games'}>
         {games}
       </TabBody>
-      <TabBody selected={UIStore.view === 'top'}></TabBody>
+      <TabBody selected={UIStore.view === 'top'}>
+        {topStreams}
+      </TabBody>
     </div>
   }
 }

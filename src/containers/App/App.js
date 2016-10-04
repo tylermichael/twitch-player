@@ -14,9 +14,10 @@ import UIStore from '../../stores/UIStore';
 
 import './App.css';
 
-TwitchAPI.init({ client_id: "hqzlo6eefvxru8861y7hsk6dpgniy8m" });
-AuthStore.authenticated = TwitchAPI.session.oauth_token != undefined;
-TwitchAPI.authenticated = AuthStore.authenticated;
+TwitchAPI.init({ client_id: "hqzlo6eefvxru8861y7hsk6dpgniy8m" })
+.then(status => {
+  AuthStore.authenticated = status.authenticated;
+})
 
 let _StreamStore = new StreamStore(UIStore);
 

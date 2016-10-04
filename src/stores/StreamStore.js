@@ -6,6 +6,7 @@ import Stream from '../models/Stream';
 class StreamStore {
 	@observable followed = [];
 	@observable games = [];
+	@observable topStreams = [];
 	APIService;
 	UIStore;
 
@@ -19,6 +20,7 @@ class StreamStore {
 		if(TwitchAPI.authenticated) {
 			this.getFollowed();
 			this.getGames();
+			this.getTopStreams();
 		}
     this.UIStore.isDoneLoading = true;
 	}
@@ -34,6 +36,13 @@ class StreamStore {
 		TwitchAPI.getTopGames()
 		.then(result => {
 			this.games = result.data.top;
+		})
+	}
+
+	getTopStreams(offset: Number = 0, replace: Boolean = false) {
+		TwitchAPI.getTopStreams()
+		.then(result => {
+			this.topStreams = result.data.streams;
 		})
 	}
 }
