@@ -81,8 +81,6 @@ class ListItem extends Component {
     let GAME_NAME = game.name;
     return <div {...game_item_props}>
       <a className="card__preview-link" href={GAME_URL}>
-        <img src={game.game.box.template.replace('{width}', 140).replace('{height}', 196)} className="card__preview" />
-        <div className="card__favorite">☆</div>
         <img src={game.preview.replace('{width}', 140).replace('{height}', 196)} className="card__preview" />
         <div {...star_props}>☆</div>
       </a>
