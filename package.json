@@ -54,7 +54,7 @@
     "react-dom": "^15.2.1",
     "tcomb": "^3.2.8",
     "twitch-api-promise": "^1.0.12",
-    "twitch-sdk": "^0.3.1"
+    "underscore": "^1.8.3"
   },
   "scripts": {
     "start": "node ./scripts/start.js",
