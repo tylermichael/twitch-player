@@ -37,6 +37,10 @@ class SideBarDirectory extends Component {
   render(): any {
     let { StreamStore, UIStore, shown } = this.props;
 
+    if(!UIStore.isDoneLoading) {
+      return <div>Loading...</div>
+    }
+
     let streams = StreamStore.followed.map((stream: Object, index: Number): any =>
       <ListItem
         key={stream._id}
@@ -82,10 +86,6 @@ class SideBarDirectory extends Component {
         'channel-list-container--hidden': !shown
       })
     };
-
-    if(!UIStore.isDoneLoading) {
-      return <div>Loading...</div>
-    }
 
     return <div {...channel_list_container_props}>
       <div className="channel-list-container__choices">
