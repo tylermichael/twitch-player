@@ -24,7 +24,7 @@ class ListItem extends Component {
   }
 
   handleStarClick(event: Object): Boolean {
-    event.preventDefault();
+    event.stopPropagation();
     let { handleFavoriteToggle, type } = this.props;
     this.props[type].favoriteToggle();
     handleFavoriteToggle();
@@ -74,15 +74,15 @@ class ListItem extends Component {
       onClick: this.handleItemClick.bind(null, 'game')
     };
     let star_props = {
-      onClick: this.props.handleFavoriteToggle,
+      onClick: this.handleStarClick,
       className: classnames({
         card__favorite: true
       })
     };
-    let GAME_URL = `http://twitch.tv/directory/game/${game.name}`;
+    // let GAME_URL = `http://twitch.tv/directory/game/${game.name}`;
     let GAME_NAME = game.name;
     return <div {...game_item_props}>
-      <a className="card__preview-link" href={GAME_URL}>
+      <a className="card__preview-link">
         <img src={game.preview.replace('{width}', 140).replace('{height}', 196)} className="card__preview" />
         <div {...star_props}>☆</div>
       </a>
