@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 import classnames from 'classnames';
 
+@observer
 class ListItem extends Component {
 
   constructor(props: Object, state: Object) {
