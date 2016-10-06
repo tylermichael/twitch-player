@@ -10,7 +10,7 @@ class SideBarDirectory extends Component {
   constructor(props: Object, state: Object) {
     super(props, state);
 
-    let methods = ['handleRefreshClick', 'handleCategoryClick', 'handleListItemClick'];
+    let methods = ['handleRefreshClick', 'handleCategoryClick', 'handleListItemClick', 'handleFavoriteToggle'];
     methods.forEach((method: string) => {
       this[method] = this[method].bind(this);
     });
@@ -30,17 +30,42 @@ class SideBarDirectory extends Component {
     this.props.UIStore.currentChannel = channel;
   }
 
+  handleFavoriteToggle(type: string, id: number) {
+    this.props.StreamStore.favoriteToggle(type, id);
+  }
+
   render(): any {
     let { StreamStore, UIStore, shown } = this.props;
 
+    if(!UIStore.isDoneLoading) {
+      return <div>Loading...</div>
+    }
+
     let streams = StreamStore.followed.map((stream: Object, index: Number): any =>
-      <ListItem key={index} handleListItemClick={this.handleListItemClick.bind(null, stream.channel.name)} type="stream" stream={stream} />
+      <ListItem
+        key={stream._id}
+        handleFavoriteToggle={this.handleFavoriteToggle.bind(null, 'channel', stream._id)}
+        handleListItemClick={this.handleListItemClick.bind(null, stream.channel.name)}
+        type="stream"
+        stream={stream}
+      />
     );
     let games = StreamStore.games.map((game: Object, index: Number): any =>
-      <ListItem key={index} handleListItemClick={this.handleListItemClick.bind(null, game.game.name)} type="game" game={game} />
+      <ListItem
+        key={index}
+        handleFavoriteToggle={this.handleFavoriteToggle.bind(null, 'game', game._id)}
+        handleListItemClick={this.handleListItemClick.bind(null, game.name)}
+        type="game"
+        game={game}
+      />
     );
     let topStreams = StreamStore.topStreams.map((stream: Object, index: Number): any =>
-      <ListItem key={index} handleListItemClick={this.handleListItemClick.bind(null, stream.channel.name)} type="stream" stream={stream} />
+      <ListItem
+        key={index}
+        handleListItemClick={this.handleListItemClick.bind(null, stream.channel.name)}
+        type="stream"
+        stream={stream}
+      />
     );
 
     let categories = ['followed', 'games', 'top'];
@@ -61,10 +86,6 @@ class SideBarDirectory extends Component {
         'channel-list-container--hidden': !shown
       })
     };
-
-    if(!UIStore.isDoneLoading) {
-      return <div>Loading...</div>
-    }
 
     return <div {...channel_list_container_props}>
       <div className="channel-list-container__choices">

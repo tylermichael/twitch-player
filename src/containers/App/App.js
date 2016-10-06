@@ -15,7 +15,7 @@ import UIStore from '../../stores/UIStore';
 import './App.css';
 
 TwitchAPI.init({ client_id: "hqzlo6eefvxru8861y7hsk6dpgniy8m" })
-.then(status => {
+.then((status: Object) => {
   AuthStore.authenticated = status.authenticated;
 })
 
@@ -41,7 +41,7 @@ class App extends Component {
 
   onTwitchConnectClick() {
     TwitchAPI.login()
-    .then(status => {
+    .then((status: Object) => {
       AuthStore.authenticated = status.authenticated;
     })
   }

@@ -7,7 +7,7 @@ class StreamModel {
   @observable created_at: Date;
   @observable channel: Object;
   @observable preview: Object;
-  @observable isFavorited: Boolean;
+  @observable favorite: Boolean;
 
   constructor(stream: Object) {
   	this._id = stream._id;
@@ -16,6 +16,11 @@ class StreamModel {
   	this.preview = stream.preview;
   	this.channel = stream.channel;
     this.viewers = stream.viewers;
+    this.favorite = false;
+  }
+
+  favoriteToggle() {
+    this.favorite = !this.favorite;
   }
 }
 
