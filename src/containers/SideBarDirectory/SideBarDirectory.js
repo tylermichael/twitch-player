@@ -5,6 +5,8 @@ import classnames from 'classnames';
 import { ListItem } from '../../components/List';
 import { TabBody } from '../../components/Tab';
 
+import './SideBarDirectory.scss'
+
 @observer
 class SideBarDirectory extends Component {
   constructor(props: Object, state: Object) {
