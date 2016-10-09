@@ -1,11 +1,17 @@
 import { observable } from 'mobx';
-import Cookies from 'js-cookie';
 
 class UIStore {
   @observable view: String;
   @observable currentChannel: String;
   @observable favoritedStreams: Array;
   @observable isDoneLoading: Boolean;
+  @observable secondaryContent: String;
+  @observable topGameSearchTerm: String;
+
+  constructor() {
+    this.view = 'followed';
+    this.currentChannel = '';
+  }
 
   currentChannelPlayerURL(): string {
     return this.currentChannel !== '' ?
@@ -17,15 +23,6 @@ class UIStore {
     return this.currentChannel !== '' ?
       `http://www.twitch.tv/${this.currentChannel}/chat` :
       '';
-  }
-
-  constructor() {
-    this.view = 'followed';
-    this.currentChannel = '';
-    if(!Cookies.get('favoritedStreams')) {
-      Cookies.set('favoritedStreams', []);
-    }
-    this.favoritedStreams = JSON.parse(Cookies.get('favoritedStreams')) || [];
   }
 }
 

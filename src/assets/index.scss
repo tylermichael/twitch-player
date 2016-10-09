@@ -96,7 +96,6 @@ a {
   &__chat {
     width: 25%;
     height: 100%;
-    /* margin-top: -10px; */
     float: left;
   }
   &:after, &:before {
@@ -105,63 +104,6 @@ a {
   }
   &:after {
     clear: both;
-  }
-}
-
-.channel-list-container {
-  width: 370px;
-  height: 100vh;
-  position: absolute;
-  padding-top: 81px;
-  border-right: 1px solid #222;
-  background-color: #333;
-  transition: margin-left .25s;
-  &--hidden {
-    margin-left: -370px;
-  }
-  &__top-button {
-    vertical-align: middle;
-    line-height: 25px;
-    text-align: center;
-    cursor: pointer;
-    padding: 10px;
-    border-bottom: 1px solid #222;
-    color: #D3D3D3!important;
-  }
-  &__top-button:hover {
-    background-color: #444;
-  }
-  &__top-button.selected {
-    background-color: #222;
-  }
-  &__top-button.selected:hover {
-    background-color: #444;
-  }
-  &__top-refresh {
-    text-align: center;
-    padding: 10px;
-    line-height: 15px;
-    cursor: pointer;
-    border-bottom: 1px solid #222;
-  }
-  &__top-refresh:hover {
-    background-color: #444;
-  }
-  &__choices {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #333;
-  }
-  &__list {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 100%;
-    display: none;
-  }
-  &__list--selected {
-    display: block;
   }
 }
 

@@ -17,10 +17,10 @@ class ListItem extends Component {
   handleItemClick(type: string, event: Event) {
     event.preventDefault();
     let { handleListItemClick } = this.props;
-    if(type === 'stream') {
+    // if(type === 'stream') {
       // eslint-disable-next-line
       handleListItemClick && handleListItemClick();
-    }
+    // }
   }
 
   handleStarClick(event: Object): Boolean {
@@ -50,7 +50,7 @@ class ListItem extends Component {
 
     return <div {...stream_item_props}>
       <div className="card__preview-link">
-        <img src={stream.preview.medium} className="card__stream-preview" />
+        <img src={stream.preview.medium +'?'+ +new Date()} className="card__stream-preview" />
         <div {...star_props}>☆</div>
       </div>
       <p className="card__status faux-link">
@@ -83,7 +83,7 @@ class ListItem extends Component {
     let GAME_NAME = game.name;
     return <div {...game_item_props}>
       <a className="card__preview-link">
-        <img src={game.preview.replace('{width}', 140).replace('{height}', 196)} className="card__preview" />
+        <img src={game.preview.replace('{width}', 140).replace('{height}', 196) +'?'+ +new Date()} className="card__preview" />
         <div {...star_props}>☆</div>
       </a>
       <p className="card__status faux-link">

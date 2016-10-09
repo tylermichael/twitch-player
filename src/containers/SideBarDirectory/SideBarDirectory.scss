@@ -1,0 +1,75 @@
+.channel-list-container {
+  width: 370px;
+  height: 100vh;
+  position: fixed;
+  border-right: 1px solid #222;
+  background-color: #333;
+  transition: margin-left .25s;
+  &--hidden {
+    margin-left: -370px;
+  }
+  &__top-button {
+    vertical-align: middle;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #222;
+    color: #D3D3D3!important;
+  }
+  &__top-button:hover {
+    background-color: #444;
+  }
+  &__top-button.selected {
+    background-color: #222;
+  }
+  &__top-button.selected:hover {
+    background-color: #444;
+  }
+  &__top-center {
+    text-align: center;
+    padding: 10px;
+    line-height: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #222;
+    &:hover {
+      background-color: #444;
+    }
+  }
+  &__choices {
+    background-color: #333;
+  }
+  &__wrapper {
+    width: 740px;
+    overflow-x: hidden;
+  }
+  &__list {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    display: none;
+    position: relative;
+    &--selected {
+      display: block;
+    }
+    &-primary {
+      left: 0px;
+      border-right: 1px solid #222;
+    }
+    &__column {
+      position: relative;
+      width: 370px;
+      float: left;
+      transition: .5s left;
+    }
+    &-secondary {
+      left: 0px;
+    }
+    &--secondary &-primary {
+      left: -370px;
+    }
+    &--secondary &-secondary {
+      left: -370px;
+    }
+  }
+}
