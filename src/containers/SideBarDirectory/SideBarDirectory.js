@@ -28,8 +28,19 @@ class SideBarDirectory extends Component {
     this.props.UIStore.view = category;
   }
 
-  handleListItemClick(channel: string) {
-    this.props.UIStore.currentChannel = channel;
+  handleListItemClick(type: string, symbol: string) {
+    switch (type) {
+      case 'stream':
+        this.props.UIStore.currentChannel = symbol;
+        break;
+      case 'game':
+        console.log(symbol)
+        this.props.UIStore.secondaryContent = 'games';
+        this.props.UIStore.topGameSearchTerm = symbol;
+        break;
+      default:
+        break;
+    }
   }
 
   handleFavoriteToggle(type: string, id: number) {
@@ -47,7 +58,7 @@ class SideBarDirectory extends Component {
       <ListItem
         key={stream._id}
         handleFavoriteToggle={this.handleFavoriteToggle.bind(null, 'channel', stream._id)}
-        handleListItemClick={this.handleListItemClick.bind(null, stream.channel.name)}
+        handleListItemClick={this.handleListItemClick.bind(null, 'stream', stream.channel.name)}
         type="stream"
         stream={stream}
       />
@@ -56,7 +67,7 @@ class SideBarDirectory extends Component {
       <ListItem
         key={index}
         handleFavoriteToggle={this.handleFavoriteToggle.bind(null, 'game', game._id)}
-        handleListItemClick={this.handleListItemClick.bind(null, game.name)}
+        handleListItemClick={this.handleListItemClick.bind(null, 'game', game.name)}
         type="game"
         game={game}
       />
@@ -64,7 +75,7 @@ class SideBarDirectory extends Component {
     let topStreams = StreamStore.topStreams.map((stream: Object, index: Number): any =>
       <ListItem
         key={index}
-        handleListItemClick={this.handleListItemClick.bind(null, stream.channel.name)}
+        handleListItemClick={this.handleListItemClick.bind(null, 'stream', stream.channel.name)}
         type="stream"
         stream={stream}
       />
@@ -89,6 +100,11 @@ class SideBarDirectory extends Component {
       })
     };
 
+    let back_button_props = {
+      onClick: (_: any) => { UIStore.secondaryContent = ''; },
+      className: 'channel-list-container__top-center'
+    }
+
     return <div {...channel_list_container_props}>
       <div className="channel-list-container__choices">
         <div className="container">
@@ -98,15 +114,16 @@ class SideBarDirectory extends Component {
             <div {...category_props[2]}>Top</div>
           </div>
         </div>
-        <div className='channel-list-container__top-refresh' onClick={this.handleRefreshClick}>REFRESH</div>
+        <div className='channel-list-container__top-center' onClick={this.handleRefreshClick}>REFRESH</div>
+        {UIStore.secondaryContent === "games" && <div {...back_button_props}>BACK</div>}
       </div>
-      <TabBody selected={UIStore.view === 'followed'}>
+      <TabBody selected={UIStore.view === 'followed'} type="listings" UIStore={UIStore}>
         {streams}
       </TabBody>
-      <TabBody selected={UIStore.view === 'games'}>
+      <TabBody selected={UIStore.view === 'games'} type="category" StreamStore={StreamStore} UIStore={UIStore}>
         {games}
       </TabBody>
-      <TabBody selected={UIStore.view === 'top'}>
+      <TabBody selected={UIStore.view === 'top'} type="listings" UIStore={UIStore}>
         {topStreams}
       </TabBody>
     </div>
