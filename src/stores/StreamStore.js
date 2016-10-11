@@ -30,7 +30,10 @@ class StreamStore {
 
 	tagFavorited(type: string, favoriteList: Array) {
 		this[type].forEach((listing: Object, index: number) =>  {
-			if(favoriteList.indexOf(listing._id) > -1) {
+			let pickTerm = (object: Object): number => {
+				return type === "followed" ? object.channel._id : object._id;
+			}
+			if(favoriteList.indexOf(pickTerm(listing)) > -1) {
 				listing.favorite = true;
 			} else {
 				listing.favorite = false;
