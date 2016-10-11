@@ -57,7 +57,7 @@ class SideBarDirectory extends Component {
     let streams = StreamStore.followed.map((stream: Object, index: Number): any =>
       <ListItem
         key={stream._id}
-        handleFavoriteToggle={this.handleFavoriteToggle.bind(null, 'channel', stream._id)}
+        handleFavoriteToggle={this.handleFavoriteToggle.bind(null, 'channel', stream.channel._id)}
         handleListItemClick={this.handleListItemClick.bind(null, 'stream', stream.channel.name)}
         type="stream"
         stream={stream}
