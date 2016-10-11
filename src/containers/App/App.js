@@ -42,8 +42,12 @@ class App extends Component {
   onTwitchConnectClick() {
     TwitchAPI.login()
     .then((status: Object) => {
+			if(!status.authenticated && status.redirect_url) {
+				console.log('redirecting...');
+				window.location = status.redirect_url;
+			}
       AuthStore.authenticated = status.authenticated;
-    })
+    });
   }
 
   bindAndToggleValue(prop: string) {
