@@ -77,8 +77,8 @@ class StreamStore {
 
 	loadFavorites() {
 		if(localStorage !== undefined) {
-			this.favoriteChannels = JSON.parse(localStorage.favoriteChannels);
-			this.favoriteGames = JSON.parse(localStorage.favoriteGames);
+			this.favoriteChannels = (localStorage.favoriteChannels && JSON.parse(localStorage.favoriteChannels)) || [];
+			this.favoriteGames = (localStorage.favoriteGames && JSON.parse(localStorage.favoriteGames)) || [];
 		}
 	}
 
