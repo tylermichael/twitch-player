@@ -34,7 +34,6 @@ class SideBarDirectory extends Component {
         this.props.UIStore.currentChannel = symbol;
         break;
       case 'game':
-        console.log(symbol)
         this.props.UIStore.secondaryContent = 'games';
         this.props.UIStore.topGameSearchTerm = symbol;
         break;
