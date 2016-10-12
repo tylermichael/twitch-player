@@ -7,6 +7,7 @@ class UIStore {
   @observable isDoneLoading: Boolean;
   @observable secondaryContent: String;
   @observable topGameSearchTerm: String;
+  @observable searchIsDoneLoading: Boolean = true;
 
   constructor() {
     this.view = 'followed';
