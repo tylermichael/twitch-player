@@ -25,6 +25,12 @@ class SideBarDirectory extends Component {
   }
 
   handleCategoryClick(category: string) {
+    let { StreamStore, UIStore } = this.props;
+    if(category !== "games" || this.props.UIStore.view !== "games") {
+      UIStore.secondaryContent = "";
+      UIStore.topGameSearchTerm = "";
+      StreamStore.topStreamsForGame = [];
+    }
     this.props.UIStore.view = category;
   }
 
