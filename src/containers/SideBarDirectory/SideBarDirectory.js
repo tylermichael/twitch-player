@@ -101,9 +101,15 @@ class SideBarDirectory extends Component {
     };
 
     let back_button_props = {
-      onClick: (_: any) => { UIStore.secondaryContent = ''; },
+      onClick: (_: any) => {
+        UIStore.secondaryContent = "";
+        setTimeout((_: any) => {
+          UIStore.topGameSearchTerm = "";
+          StreamStore.topStreamsForGame = [];
+        }, 600);
+      },
       className: 'channel-list-container__top-center'
-    }
+    };
 
     return <div {...channel_list_container_props}>
       <div className="channel-list-container__choices">
