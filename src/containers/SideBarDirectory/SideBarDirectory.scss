@@ -5,6 +5,7 @@
   border-right: 1px solid #222;
   background-color: #333;
   transition: margin-left .25s;
+  padding-bottom: 82px;
   &--hidden {
     margin-left: -370px;
   }
@@ -57,6 +58,7 @@
       border-right: 1px solid #222;
     }
     &__column {
+      height: 100%;
       position: relative;
       width: 370px;
       float: left;
