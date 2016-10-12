@@ -11,6 +11,7 @@ class StreamStore {
 	@observable topStreams: Array = [];
 	@observable favoriteChannels: Array = [];
 	@observable favoriteGames: Array = [];
+	@observable topStreamsForGame: Array = [];
 	UIStore;
 
 	@computed get favoriteStreams(): Array<Stream> {
@@ -83,6 +84,15 @@ class StreamStore {
 			this.favoriteChannels = (localStorage.favoriteChannels && JSON.parse(localStorage.favoriteChannels)) || [];
 			this.favoriteGames = (localStorage.favoriteGames && JSON.parse(localStorage.favoriteGames)) || [];
 		}
+	}
+
+	getTopStreamsForGame(offset: Number = 0, replace: Boolean = false) {
+		TwitchAPI.getTopChannelsForGame({ q: this.UIStore.topGameSearchTerm })
+		.then((result: Object) => {
+			this.topStreamsForGame = result.data.streams.map((stream: Object): Stream => {
+				return new Stream(stream);
+			});
+		})
 	}
 
 	getFollowed(offset: Number = 0, replace: Boolean = false) {
