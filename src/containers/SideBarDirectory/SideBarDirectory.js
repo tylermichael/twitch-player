@@ -36,6 +36,7 @@ class SideBarDirectory extends Component {
       case 'game':
         this.props.UIStore.secondaryContent = 'games';
         this.props.UIStore.topGameSearchTerm = symbol;
+        this.props.StreamStore.getTopStreamsForGame();
         break;
       default:
         break;
