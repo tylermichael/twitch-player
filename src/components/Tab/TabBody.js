@@ -5,6 +5,7 @@ import { observer } from 'mobx-react';
 import classnames from 'classnames';
 
 import { ListItem } from '../List';
+import { LoadingIndicator } from '../Icons';
 
 @observer
 class TabBody extends Component {
@@ -20,7 +21,7 @@ class TabBody extends Component {
       })
     };
 		if(type === 'category') {
-			channels = StreamStore.followed.map((stream: Object, index: Number): any =>
+			channels = StreamStore.topStreamsForGame.map((stream: Object, index: Number): any =>
 	      <ListItem
 	        key={stream._id}
 	        type="stream"
@@ -33,10 +34,12 @@ class TabBody extends Component {
 			<div className="channel-list-container__wrapper">
 				<div className="channel-list-container__list__column channel-list-container__list-primary">
 						{children}
-					</div>
-				<div className='channel-list-container__list__column channel-list-container__list-secondary'>
-					{channels}
 				</div>
+				{type === 'category' &&
+				<div className='channel-list-container__list__column channel-list-container__list-secondary'>
+					{UIStore.searchIsDoneLoading && channels || <LoadingIndicator />}
+				</div>
+				}
 			</div>
 		</div>
 	}

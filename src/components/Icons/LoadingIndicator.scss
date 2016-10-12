@@ -1,0 +1,38 @@
+.LoadingIndicator {
+  fill: #D3D3D3;
+  height: 32px;
+  width: 32px;
+  &__root {
+    // background-color: red;
+    height: 100%;
+    opacity: 0.7;
+    text-align: center;
+    padding-top: 100%;
+  }
+  & rect {
+    animation: ProgressFlagAnimation 1.45s infinite ease-in-out;
+    &:nth-child(1) {
+      animation-delay: 0s;
+    }
+    &:nth-child(2) {
+      animation-delay: .2s;
+    }
+    &:nth-child(3) {
+      animation-delay: .4s;
+    }
+  }
+}
+
+@keyframes ProgressFlagAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: .6;
+  }
+
+  60% {
+    opacity: .3;
+  }
+}
