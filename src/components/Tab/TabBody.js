@@ -9,6 +9,11 @@ import { LoadingIndicator } from '../Icons';
 
 @observer
 class TabBody extends Component {
+
+	handleListItemClick = (type: string, symbol: string) => {
+		this.props.UIStore.currentChannel = symbol;
+	}
+
 	render(): any {
 
     let { children, selected, UIStore, StreamStore, type } = this.props;
@@ -24,6 +29,7 @@ class TabBody extends Component {
 			channels = StreamStore.topStreamsForGame.map((stream: Object, index: Number): any =>
 	      <ListItem
 	        key={stream._id}
+	        handleListItemClick={this.handleListItemClick.bind(null, 'stream', stream.channel.name)}
 	        type="stream"
 	        stream={stream}
 	      />
