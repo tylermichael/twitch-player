@@ -42,7 +42,7 @@ class StreamStore {
 		});
 	}
 
-	sortByFavorited(type: string, favoriteList: Array) {
+	sortByFavorited(type: string) {
 		// eslint-disable-next-line
 		this[type] = _.sortBy(this[type], item => item.favorite ? 0 : 1, ['asc']);
 	}
@@ -105,7 +105,7 @@ class StreamStore {
 				return new Stream(stream);
 			});
 			this.tagFavorited('followed', this.favoriteChannels);
-			this.sortByFavorited('followed', this.favoriteChannels);
+			this.sortByFavorited('followed');
 		})
 	}
 
@@ -116,7 +116,7 @@ class StreamStore {
 				return new Game(game);
 			});
 			this.tagFavorited('games', this.favoriteGames);
-			this.sortByFavorited('games', this.favoriteGames);
+			this.sortByFavorited('games');
 		})
 	}
 
