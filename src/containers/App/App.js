@@ -73,13 +73,22 @@ class App extends Component {
       id: 'main'
     };
 
+    let pickChannelTextProps = {
+      className: classnames({
+        'no-channel-selected': true,
+        'hidden': (AuthStore.authenticated && UIStore.currentChannel !== "") || !AuthStore.authenticated
+      })
+    };
+
     return <div>
       <SideBarDirectory shown={sideBarShown} StreamStore={_StreamStore} UIStore={UIStore} />
       <section {...main_section_props}>
-        <div className="collapse-nav" onClick={this.bindAndToggleValue.bind(null, 'sideBarShown')}>Toggle Nav</div>
+        <div className="collapse-nav">
+          <button onClick={this.bindAndToggleValue.bind(null, 'sideBarShown')}>Toggle Nav</button>
+        </div>
         <div className='channel-viewer-container'>
           <img {...TwitchConnect_props} />
-          <div className='no-channel-selected hidden'>Pick a channel from the left</div>
+          <div {...pickChannelTextProps}>Pick a channel from the left</div>
           <iframe className='channel-viewer-container__player' id='js-video-player' src={UIStore.currentChannelPlayerURL()} frameBorder="0"></iframe>
           <iframe className="channel-viewer-container__chat" id='js-chat-container' src={UIStore.currentChannelChatURL()} frameBorder="0"></iframe>
         </div>

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { ListItem } from '../../components/List';
 import { TabBody } from '../../components/Tab';
 
-import './SideBarDirectory.scss'
+import './SideBarDirectory.scss';
 
 @observer
 class SideBarDirectory extends Component {
@@ -92,8 +92,7 @@ class SideBarDirectory extends Component {
       return {
         onClick: this.handleCategoryClick.bind(null, category),
         className: classnames({
-          'grid-1-3': true,
-          'channel-list-container__top-button': true,
+          'lc__button': true,
           selected: UIStore.view === category
         })
       }
@@ -101,8 +100,8 @@ class SideBarDirectory extends Component {
 
     let channel_list_container_props = {
       className: classnames({
-        'channel-list-container': true,
-        'channel-list-container--hidden': !shown
+        'lc': true,
+        'lc--hidden': !shown
       })
     };
 
@@ -114,30 +113,34 @@ class SideBarDirectory extends Component {
           StreamStore.topStreamsForGame = [];
         }, 600);
       },
-      className: 'channel-list-container__top-center'
+      className: 'lc__button'
     };
 
     return <div {...channel_list_container_props}>
-      <div className="channel-list-container__choices">
+      <div className="SideBarDirectory__tabs">
         <div className="container">
           <div className="row">
-            <div {...category_props[0]}>Followed</div>
-            <div {...category_props[1]}>Games</div>
-            <div {...category_props[2]}>Top</div>
+            <div className="lc__categories">
+              <div {...category_props[0]}>Followed</div>
+              <div {...category_props[1]}>Games</div>
+              <div {...category_props[2]}>Top</div>
+            </div>
           </div>
         </div>
-        <div className='channel-list-container__top-center' onClick={this.handleRefreshClick}>REFRESH</div>
-        {UIStore.secondaryContent === "games" && <div {...back_button_props}>BACK</div>}
       </div>
-      <TabBody selected={UIStore.view === 'followed'} type="listings" UIStore={UIStore}>
-        {streams}
-      </TabBody>
-      <TabBody selected={UIStore.view === 'games'} type="category" StreamStore={StreamStore} UIStore={UIStore}>
-        {games}
-      </TabBody>
-      <TabBody selected={UIStore.view === 'top'} type="listings" UIStore={UIStore}>
-        {topStreams}
-      </TabBody>
+      <div className='lc__button' onClick={this.handleRefreshClick}>REFRESH</div>
+      {UIStore.secondaryContent === "games" && <div {...back_button_props}>BACK</div>}
+      <div className="SideBarDirectory__body">
+        <TabBody selected={UIStore.view === 'followed'} type="listings" UIStore={UIStore}>
+          {streams}
+        </TabBody>
+        <TabBody selected={UIStore.view === 'games'} type="category" StreamStore={StreamStore} UIStore={UIStore}>
+          {games}
+        </TabBody>
+        <TabBody selected={UIStore.view === 'top'} type="listings" UIStore={UIStore}>
+          {topStreams}
+        </TabBody>
+      </div>
     </div>
   }
 }

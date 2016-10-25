@@ -7,6 +7,8 @@ import classnames from 'classnames';
 import { ListItem } from '../List';
 import { LoadingIndicator } from '../Icons';
 
+import './TabBody.scss';
+
 @observer
 class TabBody extends Component {
 
@@ -18,13 +20,16 @@ class TabBody extends Component {
 
     let { children, selected, UIStore, StreamStore, type } = this.props;
 		let channels;
+
     let container_list_props = {
       className: classnames({
-        'channel-list-container__list': true,
-        'channel-list-container__list--selected': selected,
-				'channel-list-container__list--secondary': UIStore.secondaryContent === 'games' && type === 'category'
+        'lc__body': true,
+        'lc__body--selected': selected,
+				'lc__body--multi-view': type === 'category',
+				'lc__body--view-secondary': UIStore.secondaryContent === 'games' && type === 'category'
       })
     };
+
 		if(type === 'category') {
 			channels = StreamStore.topStreamsForGame.map((stream: Object, index: Number): any =>
 	      <ListItem
@@ -35,18 +40,15 @@ class TabBody extends Component {
 	      />
 	    );
 		}
-
 		return <div {...container_list_props}>
-			<div className="channel-list-container__wrapper">
-				<div className="channel-list-container__list__column channel-list-container__list-primary">
-						{children}
-				</div>
-				{type === 'category' &&
-				<div className='channel-list-container__list__column channel-list-container__list-secondary'>
-					{UIStore.searchIsDoneLoading && channels || <LoadingIndicator />}
-				</div>
-				}
+			<div className="lc__body__column lc__body--primary">
+					{children}
 			</div>
+			{type === 'category' &&
+			<div className='lc__body__column lc__body--secondary'>
+				{UIStore.searchIsDoneLoading && channels || <div className='lc__body__loading-container'><LoadingIndicator /></div>}
+			</div>
+			}
 		</div>
 	}
 }

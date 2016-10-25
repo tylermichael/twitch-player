@@ -89,12 +89,12 @@ a {
   width: 100%;
   height: 100vh;
   &__player {
-    width: 75%;
+    width: calc(100% - 340px);
     height: 100%;
     float: left;
   }
   &__chat {
-    width: 25%;
+    width: 340px;
     height: 100%;
     float: left;
   }
@@ -108,9 +108,7 @@ a {
 }
 
 .card {
-  /* margin-bottom: -10px; */
-  /* float: left; */
-  /* width: 350px; */
+  width: 370px;
   height: 245px;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -141,6 +139,9 @@ a {
     background-color: rgba(0, 0, 0, 0.2);
     font-size: 24px;
     line-height: 24px;
+  }
+  &--type-game &__preview-link {
+    height: 199px;
   }
   &__preview-link {
     position: relative;
@@ -181,21 +182,34 @@ a {
     clear: both;
   }
 }
-.nav-open .collapse-nav {
-  opacity: 0;
+.nav-collapsed .collapse-nav {
+  & button {
+    margin-left: -100px;
+  }
+  &:hover button {
+    margin-left: 0;
+  }
 }
 .collapse-nav {
   opacity: 1;
   position: absolute;
-  cursor: pointer;
   top: 100px;
-  left: 15px;
-  border-radius: 5px;
-  line-height: 25px;
-  vertical-align: middle;
-  background-color: #0E0E0E;
-  padding: 5px;
-  border: 1px solid #4c4c4c;
+  left: 0px;
+  height: 80%;
+  width: 200px;
+  padding-left: 15px;
+  z-index: 1000;
+  & button {
+    color: #D3D3D3;
+    cursor: pointer;
+    border-radius: 5px;
+    line-height: 25px;
+    vertical-align: middle;
+    background-color: #0E0E0E;
+    padding: 5px;
+    border: 1px solid #4c4c4c;
+    transition: margin-left .25s;
+  }
 }
 
 * {

@@ -1,0 +1,67 @@
+.lc {
+  position: fixed;
+  border-right: 1px solid #222;
+  background-color: #333;
+  transition: margin-left .25s;
+  width: 370px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  &--hidden {
+    margin-left: -370px;
+  }
+  &__categories {
+    display: flex;
+    & > * {
+      width: 33.3333%;
+    }
+  }
+  &__button {
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    color: #D3D3D3!important;
+    border-bottom: 1px solid #222;
+    &:hover {
+      background-color: #444;
+    }
+    &.selected {
+      background-color: #222;
+    }
+    &.selected:hover {
+      background-color: #444;
+    }
+  }
+  &__body {
+    min-height: 0;
+    display: none;
+    flex: 1 1 370px;
+    overflow-y: scroll;
+    position: relative;
+    align-items: stretch;
+    &--selected {
+      display: flex;
+    }
+    &__column {
+    min-height: 0;
+      flex: 0 0 370px;
+      position: relative;
+      overflow-y: scroll;
+      flex-direction: row;
+      transition: .5s left;
+    }
+    &--primary, &--secondary {
+      left: 0;
+    }
+    &--view-secondary &__column {
+      left: -370px;
+    }
+    &__loading-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
