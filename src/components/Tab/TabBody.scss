@@ -37,17 +37,18 @@
     min-height: 0;
     display: none;
     flex: 1 1 370px;
-    overflow-y: scroll;
+    overflow-x: hidden;
     position: relative;
     align-items: stretch;
     &--selected {
       display: flex;
     }
     &__column {
-    min-height: 0;
+      min-height: 0;
       flex: 0 0 370px;
       position: relative;
       overflow-y: scroll;
+      overflow-x: hidden;
       flex-direction: row;
       transition: .5s left;
     }
