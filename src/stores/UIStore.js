@@ -16,13 +16,13 @@ class UIStore {
 
   currentChannelPlayerURL(): string {
     return this.currentChannel !== '' ?
-      `http://player.twitch.tv/?volume=0.38&channel=${this.currentChannel}` :
+      `https://player.twitch.tv/?volume=0.38&channel=${this.currentChannel}` :
       '';
   }
 
   currentChannelChatURL(): string {
     return this.currentChannel !== '' ?
-      `http://www.twitch.tv/${this.currentChannel}/chat` :
+      `https://www.twitch.tv/${this.currentChannel}/chat` :
       '';
   }
 }
