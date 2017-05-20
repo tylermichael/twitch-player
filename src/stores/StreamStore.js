@@ -1,6 +1,6 @@
 import { observable, computed } from 'mobx';
 import TwitchAPI from 'twitch-api-promise';
-import _ from 'underscore';
+import { sortBy } from 'underscore';
 
 import Stream from '../models/Stream';
 import Game from '../models/Game';
@@ -13,46 +13,41 @@ class StreamStore {
 	@observable favoriteGames: Array = [];
 	@observable topStreamsForGame: Array = [];
 	UIStore;
-
 	@computed get favoriteStreams(): Array<Stream> {
-		return this.followed.filter((stream: Stream): Boolean => stream.favorite)
+		return this.followed.filter((stream: Stream): boolean => stream.favorite)
 	}
-
 	constructor(UIStore: Object) {
 		this.UIStore = UIStore;
 		this.loadFavorites();
-		if(TwitchAPI.authenticated) {
+		if (TwitchAPI.authenticated) {
 			this.getFollowed();
 			this.getGames();
 			this.getTopStreams();
 		}
-    this.UIStore.isDoneLoading = true;
+		this.UIStore.isDoneLoading = true;
 	}
-
 	tagFavorited(type: string, favoriteList: Array) {
-		this[type].forEach((listing: Object, index: number) =>  {
+		this[type].forEach((listing: Object, index: number) => {
 			let pickTerm = (object: Object): number => {
 				return type === "followed" ? object.channel._id : object._id;
 			}
-			if(favoriteList.indexOf(pickTerm(listing)) > -1) {
+			if (favoriteList.indexOf(pickTerm(listing)) > -1) {
 				listing.favorite = true;
 			} else {
 				listing.favorite = false;
 			}
 		});
 	}
-
 	sortByFavorited(type: string) {
 		// eslint-disable-next-line
-		this[type] = _.sortBy(this[type], item => item.favorite ? 0 : 1, ['asc']);
+		this[type] = sortBy(this[type], item => item.favorite ? 0 : 1, ['asc']);
 	}
-
 	favoriteToggle(type: string, id: number) {
 		let position;
 		switch (type) {
 			case 'channel':
 				position = this.favoriteChannels.indexOf(id);
-				if(position > -1) {
+				if (position > -1) {
 					this.favoriteChannels.splice(position, 1);
 				} else {
 					this.favoriteChannels.push(id);
@@ -60,71 +55,63 @@ class StreamStore {
 				break;
 			case 'game':
 				position = this.favoriteGames.indexOf(id);
-				if(position > -1) {
+				if (position > -1) {
 					this.favoriteGames.splice(position, 1);
 				} else {
 					this.favoriteGames.push(id);
 				}
-			break;
+				break;
 			default:
-			break;
+				break;
 		}
 		this.saveFavorites();
 	}
-
 	saveFavorites() {
-		if(localStorage !== undefined) {
-			localStorage.favoriteChannels = JSON.stringify(this.favoriteChannels);
-			localStorage.favoriteGames = JSON.stringify(this.favoriteGames);
-		}
+		if (localStorage !== undefined) return;
+		localStorage.favoriteChannels = JSON.stringify(this.favoriteChannels);
+		localStorage.favoriteGames = JSON.stringify(this.favoriteGames);
 	}
-
 	loadFavorites() {
-		if(localStorage !== undefined) {
-			this.favoriteChannels = (localStorage.favoriteChannels && JSON.parse(localStorage.favoriteChannels)) || [];
-			this.favoriteGames = (localStorage.favoriteGames && JSON.parse(localStorage.favoriteGames)) || [];
-		}
+		if (localStorage !== undefined) return;
+		this.favoriteChannels = (localStorage.favoriteChannels && JSON.parse(localStorage.favoriteChannels)) || [];
+		this.favoriteGames = (localStorage.favoriteGames && JSON.parse(localStorage.favoriteGames)) || [];
 	}
-
-	getTopStreamsForGame(offset: Number = 0, replace: Boolean = false) {
-		if(this.UIStore.topGameSearchTerm === "" || this.UIStore.topGameSearchTerm === undefined) return;
+	getTopStreamsForGame(offset: Number = 0, replace: boolean = false) {
+		if (this.UIStore.topGameSearchTerm === "" || this.UIStore.topGameSearchTerm === undefined) return;
 		this.UIStore.searchIsDoneLoading = false;
 		TwitchAPI.getTopChannelsForGame({ q: this.UIStore.topGameSearchTerm })
-		.then((result: Object) => {
-			this.topStreamsForGame = result.data.streams.map((stream: Object): Stream => {
-				return new Stream(stream);
-			});
-			this.UIStore.searchIsDoneLoading = true;
-		})
+			.then((result: Object) => {
+				this.topStreamsForGame = result.data.streams.map((stream: Object): Stream => {
+					return new Stream(stream);
+				});
+				this.UIStore.searchIsDoneLoading = true;
+			})
 	}
-
-	getFollowed(offset: Number = 0, replace: Boolean = false) {
+	getFollowed(offset: Number = 0, replace: boolean = false) {
 		TwitchAPI.getFollowedStreams()
-		.then((result: Object) => {
-			this.followed = result.data.streams.map((stream: Object): Stream => {
-				return new Stream(stream);
-			});
-			this.tagFavorited('followed', this.favoriteChannels);
-			this.sortByFavorited('followed');
-		})
+			.then((result: Object) => {
+				this.followed = result.data.streams.map((stream: Object): Stream => {
+					return new Stream(stream);
+				});
+				this.tagFavorited('followed', this.favoriteChannels);
+				this.sortByFavorited('followed');
+			})
 	}
-
-	getGames(offset: Number = 0, replace: Boolean = false) {
+	getGames(offset: Number = 0, replace: boolean = false) {
 		TwitchAPI.getTopGames()
-		.then((result: Object) => {
-			this.games = result.data.top.map((game: Object): Game => {
-				return new Game(game);
-			});
-			this.tagFavorited('games', this.favoriteGames);
-			this.sortByFavorited('games');
-		})
+			.then((result: Object) => {
+				this.games = result.data.top.map((game: Object): Game => {
+					return new Game(game);
+				});
+				this.tagFavorited('games', this.favoriteGames);
+				this.sortByFavorited('games');
+			})
 	}
-
-	getTopStreams(offset: Number = 0, replace: Boolean = false) {
+	getTopStreams(offset: Number = 0, replace: boolean = false) {
 		TwitchAPI.getTopStreams()
-		.then((result: Object) => {
-			this.topStreams = result.data.streams;
-		})
+			.then((result: Object) => {
+				this.topStreams = result.data.streams;
+			})
 	}
 }
 

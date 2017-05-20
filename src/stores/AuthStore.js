@@ -1,10 +1,8 @@
-// import Cookie from 'js-cookie';
 import { observable } from 'mobx';
 
 class AuthStore {
 	APIService;
-	@observable authenticated;
-
+	@observable authenticated: boolean;
 	constructor() {
 		this.authenticated = false;
 	}

@@ -4,34 +4,20 @@ import classnames from 'classnames';
 
 @observer
 class ListItem extends Component {
-
-  constructor(props: Object, state: Object) {
-    super(props, state);
-
-    let methods = ['renderStream', 'renderGame', 'handleItemClick', 'handleStarClick'];
-    methods.forEach((method: string) => {
-      this[method] = this[method].bind(this);
-    });
-  }
-
-  handleItemClick(type: string, event: Event) {
+  handleItemClick = (type: string, event: Event) => {
     event.preventDefault();
     let { handleListItemClick } = this.props;
-    // if(type === 'stream') {
-      // eslint-disable-next-line
-      handleListItemClick && handleListItemClick();
-    // }
+    // eslint-disable-next-line
+    handleListItemClick && handleListItemClick();
   }
-
-  handleStarClick(event: Object): Boolean {
+  handleStarClick = (event: Object): boolean => {
     event.stopPropagation();
     let { handleFavoriteToggle, type } = this.props;
     this.props[type].favoriteToggle();
     handleFavoriteToggle();
     return false;
   }
-
-  renderStream(): React.Element<{}> {
+  renderStream = (): React.Element<{}> => {
     let { stream } = this.props;
     let stream_item_props = {
       key: stream._id,
@@ -50,7 +36,7 @@ class ListItem extends Component {
 
     return <div {...stream_item_props}>
       <div className="card__preview-link">
-        <img src={stream.preview.medium +'?'+ +new Date()} className="card__stream-preview" />
+        <img src={stream.preview.medium + '?' + +new Date()} className="card__stream-preview" />
         <div {...star_props}>☆</div>
       </div>
       <p className="card__status faux-link">
@@ -61,8 +47,7 @@ class ListItem extends Component {
       </p>
     </div>
   }
-
-  renderGame(): React.Element<{}> {
+  renderGame = (): React.Element<{}> => {
     let { game } = this.props;
     let game_item_props = {
       key: game._id,
@@ -79,11 +64,10 @@ class ListItem extends Component {
         card__favorite: true
       })
     };
-    // let GAME_URL = `http://twitch.tv/directory/game/${game.name}`;
     let GAME_NAME = game.name;
     return <div {...game_item_props}>
       <a className="card__preview-link">
-        <img src={game.preview.replace('{width}', 140).replace('{height}', 196) +'?'+ +new Date()} className="card__preview" />
+        <img src={game.preview.replace('{width}', 140).replace('{height}', 196) + '?' + +new Date()} className="card__preview" />
         <div {...star_props}>☆</div>
       </a>
       <p className="card__status faux-link">
@@ -94,14 +78,15 @@ class ListItem extends Component {
       </p>
     </div>
   }
-
   render(): any {
     let { type } = this.props;
-    if(type === 'stream') {
+    if (type === 'stream') {
       return this.renderStream();
-    } else if(type === 'game') {
+    }
+    if (type === 'game') {
       return this.renderGame();
     }
+    return;
   }
 }
 
