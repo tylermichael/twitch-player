@@ -26,7 +26,7 @@ class StreamStore {
 			this.getGames();
 			this.getTopStreams();
 		}
-    this.UIStore.isDoneLoading = true;
+    	this.UIStore.isDoneLoading = true;
 	}
 
 	tagFavorited(type: string, favoriteList: Array) {
