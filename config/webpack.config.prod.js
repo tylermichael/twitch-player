@@ -101,7 +101,10 @@ module.exports = {
         minifyURLs: true
       }
     }),
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+      'process.env.TWITCH_API_KEY': '"hqzlo6eefvxru8861y7hsk6dpgniy8m"'
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
