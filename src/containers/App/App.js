@@ -14,7 +14,8 @@ import UIStore from '../../stores/UIStore';
 
 import './App.css';
 
-TwitchAPI.init({ client_id: "hqzlo6eefvxru8861y7hsk6dpgniy8m" })
+console.log(process)
+TwitchAPI.init({ client_id: process.env.TWITCH_API_KEY })
 .then((status: Object) => {
   AuthStore.authenticated = status.authenticated;
 })
