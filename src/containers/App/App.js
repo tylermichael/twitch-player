@@ -75,6 +75,7 @@ class App extends Component {
           <iframe
             className='channel-viewer-container__player'
             id='js-video-player'
+            allowFullScreen="true"
             src={UIStore.currentChannelPlayerURL()}
             frameBorder="0"
           ></iframe>
