@@ -9,32 +9,21 @@ import './SideBarDirectory.scss';
 
 @observer
 class SideBarDirectory extends Component {
-  constructor(props: Object, state: Object) {
-    super(props, state);
-
-    let methods = ['handleRefreshClick', 'handleCategoryClick', 'handleListItemClick', 'handleFavoriteToggle'];
-    methods.forEach((method: string) => {
-      this[method] = this[method].bind(this);
-    });
-  }
-
-  handleRefreshClick() {
+  handleRefreshClick = _ => {
     this.props.StreamStore.getFollowed();
     this.props.StreamStore.getGames();
     this.props.StreamStore.getTopStreams();
   }
-
-  handleCategoryClick(category: string) {
+  handleCategoryClick = (category: string) => {
     let { StreamStore, UIStore } = this.props;
-    if(category !== "games" || this.props.UIStore.view !== "games") {
+    if (category !== "games" || this.props.UIStore.view !== "games") {
       UIStore.secondaryContent = "";
       UIStore.topGameSearchTerm = "";
       StreamStore.topStreamsForGame = [];
     }
     this.props.UIStore.view = category;
   }
-
-  handleListItemClick(type: string, symbol: string) {
+  handleListItemClick = (type: string, symbol: string) => {
     switch (type) {
       case 'stream':
         this.props.UIStore.currentChannel = symbol;
@@ -48,18 +37,14 @@ class SideBarDirectory extends Component {
         break;
     }
   }
-
-  handleFavoriteToggle(type: string, id: number) {
+  handleFavoriteToggle = (type: string, id: number) => {
     this.props.StreamStore.favoriteToggle(type, id);
   }
-
   render(): any {
     let { StreamStore, UIStore, shown } = this.props;
-
-    if(!UIStore.isDoneLoading) {
+    if (!UIStore.isDoneLoading) {
       return <div>Loading...</div>
     }
-
     let streams = StreamStore.followed.map((stream: Object, index: Number): any =>
       <ListItem
         key={stream._id}
@@ -97,14 +82,12 @@ class SideBarDirectory extends Component {
         })
       }
     });
-
     let channel_list_container_props = {
       className: classnames({
         'lc': true,
         'lc--hidden': !shown
       })
     };
-
     let back_button_props = {
       onClick: (_: any) => {
         UIStore.secondaryContent = "";
