@@ -89,7 +89,10 @@ module.exports = {
       template: indexHtmlPath,
       favicon: faviconPath,
     }),
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"development"',
+      'process.env.TWITCH_API_KEY': '"rltpdmlwvgteskhdiovq5pm045jngu"'
+    }),
     // Note: only CSS is currently hot reloaded
     new webpack.HotModuleReplacementPlugin()
   ]
