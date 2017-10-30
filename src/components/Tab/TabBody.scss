@@ -16,6 +16,10 @@
       width: 33.3333%;
     }
   }
+  &__categories &__button:nth-child(2) {
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
+  }
   &__button {
     line-height: 25px;
     text-align: center;
